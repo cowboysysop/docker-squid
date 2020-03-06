@@ -7,7 +7,9 @@ ENV SQUID_VERSION=3.5.27 \
     SQUID_USER=proxy
 
 RUN apt-get update \
- && DEBIAN_FRONTEND=noninteractive apt-get install -y squid=${SQUID_VERSION}* \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+   squid=${SQUID_VERSION}* \
+   squidclient=${SQUID_VERSION}* \
  && rm -rf /var/lib/apt/lists/*
 
 COPY entrypoint.sh /sbin/entrypoint.sh
